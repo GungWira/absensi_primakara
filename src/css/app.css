@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+input,
+button {
+  font-family: "XDPrime";
+}
+
+.bg-darkblue {
+  background-color: #032038;
+}
+
+.bg-lightblue {
+  background-color: #1dcad3;
+}
+
+.text-darkblue {
+  color: #032038;
+}
+
+.active-link {
+  background-color: #1dcad3;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+.active-link svg {
+  color: #032038;
+}
+.active-link p {
+  color: #032038;
+}
+@font-face {
+  font-family: "XDPrime";
+  src: url("/fonts/XDPrime-Regular.otf");
+}
