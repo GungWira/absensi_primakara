@@ -133,18 +133,10 @@ async function captureImage(latitude: number, longitude: number) {
 
   const encryptedLocation = encrypt.encrypt(location);
   if (!encryptedLocation) throw new Error("Encrypt gagal");
-  console.log({
-    latitude,
-    longitude,
-    location: encryptedLocation,
-    base64_image: base64Img,
-  });
 
   // ambil data token cookies dari user
   const cookies = useCookies();
   const token = cookies.get("auth");
-
-  console.log("HIT API");
 
   axios
     .post(
@@ -398,7 +390,14 @@ function setAlert(status: NotificationOptions, name: null | string) {
             Waktu :
           </p>
           <p class="text-xl text-black opacity-80">
-            {{ new Date().getHours() + "." + new Date().getMinutes() }} WITA
+            {{
+              new Date().getHours() +
+              "." +
+              (new Date().getMinutes() < 10
+                ? "0" + new Date().getMinutes()
+                : new Date().getMinutes())
+            }}
+            WITA
           </p>
         </div>
         <!-- STATUS -->
