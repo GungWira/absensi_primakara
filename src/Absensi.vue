@@ -11,7 +11,7 @@ const canvasRef = ref<HTMLCanvasElement | null>(null);
 const isNotification = ref<boolean>(false);
 const campustLatitude = ref<number>(-8.68956618854736);
 const campusLongtitude = ref<number>(115.23798081887583);
-const allowedDistance = ref<number>(1000000000000); // meter
+const allowedDistance = ref<number>(25); // meter
 
 const notificationTitile = ref<HTMLHeadingElement | null>(null);
 const notificationImage = ref<HTMLImageElement | null>(null);
@@ -105,8 +105,8 @@ async function captureImage(latitude: number, longitude: number) {
   const canvas = canvasRef.value;
 
   // set ukuran canvas agar lebih kecil
-  canvas.width = 240;
-  canvas.height = 160;
+  canvas.width = 480;
+  canvas.height = 320;
 
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
@@ -115,23 +115,36 @@ async function captureImage(latitude: number, longitude: number) {
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
   // convert canvas jadi base64
-  const base64Img = canvas.toDataURL("image/jpeg", 0.7);
+  let base64Img = canvas.toDataURL("image/jpeg", 0.8);
+  if (base64Img.startsWith("data:")) {
+    base64Img = base64Img.split(",")[1]!;
+  }
 
+  // persiapkan sistem enkripsi
   const encrypt = new JSEncrypt();
   let publicKey = atob(import.meta.env.VITE_PUBLIC_KEY_B64);
   encrypt.setPublicKey(publicKey);
 
+  // persiapkan data lokasi sebagai key
   const location = JSON.stringify({
-    latitude: -8.6896443,
-    longitude: 115.2376064,
+    latitude: latitude,
+    longitude: longitude,
   });
 
   const encryptedLocation = encrypt.encrypt(location);
   if (!encryptedLocation) throw new Error("Encrypt gagal");
-  const locationBase64 = btoa(encryptedLocation);
+  console.log({
+    latitude,
+    longitude,
+    location: encryptedLocation,
+    base64_image: base64Img,
+  });
 
+  // ambil data token cookies dari user
   const cookies = useCookies();
   const token = cookies.get("auth");
+
+  console.log("HIT API");
 
   axios
     .post(
@@ -139,7 +152,7 @@ async function captureImage(latitude: number, longitude: number) {
       {
         latitude,
         longitude,
-        location: locationBase64,
+        location: encryptedLocation,
         base64_image: base64Img,
       },
       {
@@ -149,7 +162,8 @@ async function captureImage(latitude: number, longitude: number) {
       }
     )
     .then((response) => {
-      if (response.status == 400) {
+      console.log(response);
+      if (response.status == 200) {
         setAlert(
           NotificationOptions.success,
           response.data.data.user.nama_lengkap
