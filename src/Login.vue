@@ -47,12 +47,14 @@ function submitForm(event: any) {
   <Head>
     <title>Login</title>
   </Head>
-  <div class="flex h-screen w-screen items-center justify-center bg-slate-50">
+  <div
+    class="flex h-screen w-screen items-center justify-center bg-slate-50 px-6"
+  >
     <div
-      class="flex w-full max-w-4xl flex-row items-stretch justify-start overflow-hidden rounded-lg shadow-lg"
+      class="flex flex-col sm:flex-row w-full max-w-4xl items-stretch justify-start overflow-hidden rounded-lg shadow-lg"
     >
       <!-- IMAGE AREA -->
-      <div class="relative w-full flex-1 overflow-hidden">
+      <div class="relative w-full h-64 sm:h-auto sm:flex-1 overflow-hidden">
         <img
           src="/assets/login-img.png"
           alt="login img"
@@ -68,13 +70,16 @@ function submitForm(event: any) {
         </div>
       </div>
       <!-- FORM AREA -->
-      <form action="" class="flex flex-1 flex-col gap-5 bg-white px-6 py-16">
+      <form
+        action=""
+        class="flex flex-1 flex-col gap-5 bg-white px-6 py-8 pb-10 sm:pb-16 sm:py-16"
+      >
         <!-- HEAD -->
         <div class="flex w-full flex-col items-start justify-start gap-4">
           <img
             src="/assets/logo-primakara-color.png"
             alt="logo primakara university color"
-            class="h-10"
+            class="h-8 sm:h-10"
           />
           <p class="text-base text-black opacity-70">
             Silahkan login untuk mengakses absensi

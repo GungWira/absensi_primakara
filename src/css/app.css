@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+  font-size: 16px;
+}
+
 p,
 span,
 h1,
@@ -40,4 +44,16 @@ button {
 @font-face {
   font-family: "XDPrime";
   src: url("/fonts/XDPrime-Regular.otf");
+}
+
+@media screen and (max-width: 1024px) {
+  * {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  * {
+    font-size: 12px;
+  }
 }
