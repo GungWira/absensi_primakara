@@ -7,7 +7,7 @@ import { Head } from "@vueuse/head";
     <title>Homepage</title>
   </Head>
   <div
-    class="relative flex h-screen w-full flex-row items-center justify-center overflow-hidden"
+    class="relative flex h-screen w-full flex-col sm:flex-row items-center justify-center overflow-hidden"
   >
     <!-- VIDEO PLAYER -->
     <div class="flex h-full w-full items-center justify-start bg-black">
@@ -17,25 +17,27 @@ import { Head } from "@vueuse/head";
     </div>
     <!-- SIDEBAR -->
     <div
-      class="bg-darkblue flex h-full w-[25vw] max-w-80 flex-col items-center justify-start gap-10 px-2 py-8"
+      class="bg-darkblue flex h-fit sm:h-full w-full sm:w-[25vw] sm:max-w-80 flex-row sm:flex-col items-center justify-start gap-10 px-2 py-8"
     >
-      <div href="https://primakara.ac.id" class="w-3/4">
+      <div href="https://primakara.ac.id" class="w-3/4 hidden sm:flex">
         <img
           src="/assets/logo-primakara-white.png"
           alt="logo primakara university"
         />
       </div>
-      <div class="flex h-full w-full flex-col items-start justify-start gap-2">
+      <div
+        class="flex h-full w-full flex-row sm:flex-col items-start justify-start gap-2"
+      >
         <a
           href="/"
-          class="active-link flex w-full flex-col items-center justify-center gap-4 py-8"
+          class="active-link flex w-full flex-col items-center justify-center gap-2 sm:gap-4 py-5 sm:py-8"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-house-door-fill h-8 w-8 text-white"
+            class="bi bi-house-door-fill h-6 w-6 sm:h-8 sm:w-8 text-white"
             viewBox="0 0 16 16"
           >
             <path
@@ -46,14 +48,14 @@ import { Head } from "@vueuse/head";
         </a>
         <a
           href="/absensi"
-          class="flex w-full flex-col items-center justify-center gap-4 py-8"
+          class="flex w-full flex-col items-center justify-center gap-2 sm:gap-4 py-5 sm:py-8"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-fingerprint h-8 w-8 text-white"
+            class="bi bi-fingerprint h-6 w-6 sm:h-8 sm:w-8 text-white"
             viewBox="0 0 16 16"
           >
             <path
@@ -76,14 +78,14 @@ import { Head } from "@vueuse/head";
         </a>
         <a
           href="/"
-          class="flex w-full flex-col items-center justify-center gap-4 py-8"
+          class="flex w-full flex-col items-center justify-center gap-2 sm:gap-4 py-5 sm:py-8"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-calendar-check-fill h-8 w-8 text-white"
+            class="bi bi-calendar-check-fill h-6 w-6 sm:h-8 sm:w-8 text-white"
             viewBox="0 0 16 16"
           >
             <path
