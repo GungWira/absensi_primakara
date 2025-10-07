@@ -154,7 +154,6 @@ async function captureImage(latitude: number, longitude: number) {
       }
     )
     .then((response) => {
-      console.log(response);
       if (response.status == 200) {
         setAlert(
           NotificationOptions.success,
@@ -189,6 +188,7 @@ function setAlert(status: NotificationOptions, name: null | string) {
   } else if (status == NotificationOptions.success) {
     notificationTitile.value!.innerHTML = "ABSENSI BERHASIL";
     notificationParagrafName.value!.innerHTML = name!;
+    notificationImage.value!.src = "/assets/Success.svg";
     notificationStatus.value = true;
   } else {
     notificationTitile.value!.innerHTML = "GAGAL TERDETEKSI";

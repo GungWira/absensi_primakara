@@ -9,7 +9,7 @@ const emailRef = ref<HTMLInputElement | null>(null);
 const passwordRef = ref<HTMLInputElement | null>(null);
 const isLoading = ref<boolean>(false);
 
-function submitForm(event: any) {
+function submitForm(event: Event) {
   event.preventDefault();
   isLoading.value = true;
 
@@ -99,6 +99,7 @@ function submitForm(event: any) {
               name="email"
               placeholder="Email"
               autocomplete="email"
+              required
               class="w-full rounded-md border border-slate-100 px-3 py-2 outline-0"
             />
           </div>
@@ -112,6 +113,7 @@ function submitForm(event: any) {
               name="password"
               placeholder="Password"
               autocomplete="current-password"
+              required
               class="w-full rounded-md border border-slate-100 px-3 py-2 outline-0"
             />
           </div>

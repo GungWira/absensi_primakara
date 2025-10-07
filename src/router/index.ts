@@ -21,6 +21,27 @@ const router = createRouter({
       path: "/login",
       component: Login,
     },
+    {
+      path: "/logout",
+      name: "logout",
+      component: {
+        beforeRouteEnter(to, from, next) {
+          document.cookie.split(";").forEach(function (c) {
+            document.cookie = c
+              .replace(/^ +/, "")
+              .replace(
+                /=.*/,
+                "=;expires=" + new Date(0).toUTCString() + ";path=/"
+              );
+          });
+
+          next("/");
+        },
+        render() {
+          return null;
+        },
+      },
+    },
   ],
 });
 
