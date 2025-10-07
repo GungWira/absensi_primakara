@@ -60,7 +60,9 @@ function submitForm(event: any) {
           alt="login img"
           class="h-full w-full object-cover"
         />
-        <div class="absolute bottom-8 flex w-fit flex-col gap-2 px-8">
+        <div
+          class="absolute bottom-6 sm:bottom-8 flex w-fit flex-col gap-2 px-6 sm:px-8"
+        >
           <div
             class="bg-lightblue w-fit rounded-md rounded-tl-2xl rounded-br-2xl py-2 ps-4 pe-5 text-lg font-semibold text-white italic"
           >
