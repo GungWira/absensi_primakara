@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-* {
+html {
   font-size: 16px;
 }
 
@@ -47,13 +47,13 @@ button {
 }
 
 @media screen and (max-width: 1024px) {
-  * {
+  html {
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 640px) {
-  * {
+  html {
     font-size: 12px;
   }
 }

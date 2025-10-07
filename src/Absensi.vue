@@ -212,7 +212,7 @@ function setAlert(status: NotificationOptions, name: null | string) {
 <template>
   <Head title="Absensi"><title>Absensi</title></Head>
   <div
-    class="relative flex h-screen w-full flex-row items-center justify-center overflow-hidden"
+    class="relative flex h-screen w-full flex-col sm:flex-row items-center justify-center overflow-hidden"
   >
     <!-- CAMERA AREA -->
     <div
@@ -228,7 +228,7 @@ function setAlert(status: NotificationOptions, name: null | string) {
       <canvas ref="canvasRef" class="hidden"></canvas>
       <!-- BUTTON CAPTURE -->
       <button
-        class="absolute right-10 aspect-square cursor-pointer rounded-full border-3 border-[#032038] bg-white p-5"
+        class="absolute sm:bottom-auto bottom-6 sm:right-10 aspect-square cursor-pointer rounded-full border-3 border-[#032038] bg-white p-5"
         @click="checkAndCapture"
       >
         <svg
@@ -236,7 +236,7 @@ function setAlert(status: NotificationOptions, name: null | string) {
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-camera-fill h-10 w-10 text-[#032038]"
+          class="bi bi-camera-fill sm:h-10 sm:w-10 h-8 w-8 text-[#032038]"
           viewBox="0 0 16 16"
         >
           <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
@@ -248,25 +248,27 @@ function setAlert(status: NotificationOptions, name: null | string) {
     </div>
     <!-- SIDEBAR -->
     <div
-      class="bg-darkblue flex h-full w-[25vw] max-w-80 flex-col items-center justify-start gap-10 px-2 py-8"
+      class="bg-darkblue flex h-fit sm:h-full w-full sm:w-[25vw] sm:max-w-80 flex-row sm:flex-col items-center justify-start gap-10 px-2 py-8"
     >
-      <div href="https://primakara.ac.id" class="w-3/4">
+      <div href="https://primakara.ac.id" class="w-3/4 hidden sm:flex">
         <img
           src="/assets/logo-primakara-white.png"
           alt="logo primakara university"
         />
       </div>
-      <div class="flex h-full w-full flex-col items-start justify-start gap-2">
+      <div
+        class="flex h-full w-full flex-row sm:flex-col items-start justify-start gap-2"
+      >
         <a
           href="/"
-          class="flex w-full flex-col items-center justify-center gap-4 py-8"
+          class="flex w-full flex-col items-center justify-center gap-2 sm:gap-4 py-5 sm:py-8"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-house-door-fill h-8 w-8 text-white"
+            class="bi bi-house-door-fill h-6 w-6 sm:h-8 sm:w-8 text-white"
             viewBox="0 0 16 16"
           >
             <path
@@ -277,14 +279,14 @@ function setAlert(status: NotificationOptions, name: null | string) {
         </a>
         <a
           href="/absensi"
-          class="active-link flex w-full flex-col items-center justify-center gap-4 py-8"
+          class="flex active-link w-full flex-col items-center justify-center gap-2 sm:gap-4 py-5 sm:py-8"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-fingerprint h-8 w-8 text-white"
+            class="bi bi-fingerprint h-6 w-6 sm:h-8 sm:w-8 text-white"
             viewBox="0 0 16 16"
           >
             <path
@@ -307,14 +309,14 @@ function setAlert(status: NotificationOptions, name: null | string) {
         </a>
         <a
           href="/"
-          class="flex w-full flex-col items-center justify-center gap-4 py-8"
+          class="flex w-full flex-col items-center justify-center gap-2 sm:gap-4 py-5 sm:py-8"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-calendar-check-fill h-8 w-8 text-white"
+            class="bi bi-calendar-check-fill h-6 w-6 sm:h-8 sm:w-8 text-white"
             viewBox="0 0 16 16"
           >
             <path
@@ -327,9 +329,9 @@ function setAlert(status: NotificationOptions, name: null | string) {
     </div>
     <!-- ALERT TOP -->
     <div
-      class="absolute top-8 left-4 flex flex-col items-start justify-start gap-1 rounded-lg border border-[#1dcad3] bg-white p-6"
+      class="absolute top-8 left-4 mr-4 flex flex-col items-start justify-start gap-1 rounded-lg border border-[#1dcad3] bg-white sm:p-6 p-5"
     >
-      <h2 class="text-2xl font-bold text-[#1dcad3]">
+      <h2 class="text-xl font-bold text-[#1dcad3]">
         Selamat
         {{
           new Date().getHours() >= 4 && new Date().getHours() <= 9
@@ -349,12 +351,12 @@ function setAlert(status: NotificationOptions, name: null | string) {
 
   <!-- NOTIFICATION -->
   <div
-    class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/80"
+    class="absolute px-6 top-0 left-0 z-50 flex h-screen w-screen overflow-hidden items-center justify-center bg-black/80"
     v-show="isNotification"
   >
     <!-- CARD -->
     <div
-      class="flex w-full max-w-lg flex-col items-center justify-center gap-5 rounded-xl bg-white p-6 py-10"
+      class="flex w-full max-w-lg flex-col max-h-[90%] items-center justify-center gap-5 rounded-xl bg-white p-6 py-10"
     >
       <!-- HEAD -->
       <h2
@@ -369,7 +371,7 @@ function setAlert(status: NotificationOptions, name: null | string) {
           ref="notificationImage"
           src="/assets/Success.svg"
           alt="image illustration primakara university absensi"
-          class="h-full w-full max-w-sm object-cover"
+          class="w-full max-w-sm object-cover"
         />
       </div>
       <!-- DETAIL -->
@@ -379,21 +381,23 @@ function setAlert(status: NotificationOptions, name: null | string) {
           class="flex w-full flex-row items-start justify-start gap-3"
           v-show="notificationStatus"
         >
-          <p class="text-lg font-bold text-black opacity-80">Nama :</p>
+          <p class="text-xl font-bold text-black opacity-80 whitespace-nowrap">
+            Nama :
+          </p>
           <p
             ref="notificationParagrafName"
-            class="text-lg text-black opacity-80"
-          >
-            Anak Agung Gede Putu Wiradarma
-          </p>
+            class="text-xl text-black opacity-80"
+          ></p>
         </div>
         <!-- WAKTU -->
         <div
           class="flex w-full flex-row items-start justify-start gap-3"
           v-show="notificationStatus"
         >
-          <p class="text-lg font-bold text-black opacity-80">Waktu :</p>
-          <p class="text-lg text-black opacity-80">
+          <p class="text-xl font-bold text-black opacity-80 whitespace-nowrap">
+            Waktu :
+          </p>
+          <p class="text-xl text-black opacity-80">
             {{ new Date().getHours() + "." + new Date().getMinutes() }} WITA
           </p>
         </div>
@@ -405,9 +409,7 @@ function setAlert(status: NotificationOptions, name: null | string) {
           <p
             ref="notificationParagrafStatus"
             class="text-lg text-black opacity-80"
-          >
-            Anak Agung Gede Putu Wiradarma
-          </p>
+          ></p>
         </div>
       </div>
       <!-- ACTION -->
